@@ -1,0 +1,37 @@
+name: Sign in
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 23 * * *'
+
+jobs:
+  sign-in:
+    runs-on: bun-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Restore cache
+        id: restore-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache
+          key: nte-sign-${{ github.run_id }}
+          restore-keys: |
+            nte-sign-
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Sign in
+        env:
+          TJD_ACCOUNT: ${{ secrets.TJD_ACCOUNT || vars.TJD_ACCOUNT }}
+          TJD_PASSWORD: ${{ secrets.TJD_PASSWORD || vars.TJD_PASSWORD }}
+        run: bun start
+      - name: Ensure cache directory
+        if: always()
+        run: mkdir -p .cache
+      - name: Save cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache
+          key: nte-sign-${{ github.run_id }}
