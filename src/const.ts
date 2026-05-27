@@ -8,6 +8,12 @@ export const CHANNEL_ID = '2';
 export const SDK_VERSION = '4.131.0';
 export const APP_VERSION = '1.2.2';
 export const COMMUNITY_ID = '2';
+export const SHARE_PLATFORM = 'qq';
+
+export const TASK_SIGNIN = 'signin_c';
+export const TASK_BROWSE = 'browse_post_c';
+export const TASK_LIKE = 'like_post_c';
+export const TASK_SHARE = 'share';
 
 export const LAOHU_SECRET = '5fd254cc0c8740d7a57376415ce40ede';
 export const AES_KEY = 'a57376415ce40ede';

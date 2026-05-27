@@ -30,5 +30,3 @@ await writeCache(env.account, client.session);
 if (hasMarkedError()) {
   process.exitCode = 1;
 }
-
-console.log('完成');
