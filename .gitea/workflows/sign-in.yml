@@ -20,7 +20,7 @@ jobs:
           restore-keys: |
             nte-sign-
       - name: Install dependencies
-        run: bun install --frozen-lockfile --production
+        run: bun install --frozen-lockfile --production --registry=https://registry.npmmirror.com
       - name: Sign in
         env:
           TJD_ACCOUNT: ${{ secrets.TJD_ACCOUNT || vars.TJD_ACCOUNT }}
